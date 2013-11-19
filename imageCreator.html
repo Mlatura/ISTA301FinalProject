@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="/scripts/ImageCreator.js" ></script>
+    </head>
+    <body onload="init()">
+        <h1>Hello {{ username }}! <a href={{ logout_url }}>logout</a></h1>
+        <canvas id="canvas" width="400" height="400" style="border:2px solid;background:#FFFFFF;"></canvas>
+        <div>
+            <button id="submit">Submit</button>
+        </div>
+    </body>
+</html>
+
+{% endautoescape %}
