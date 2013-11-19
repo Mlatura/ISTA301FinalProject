@@ -30,50 +30,6 @@ function getMoreImages () {
 	getGalleryFeed();
 }
 
-function processLogin () {
-	var username = $("#user").val();
-	var password = $("#pass").val();
-
-	var request = new XMLHttpRequest();
-	request.open("GET", "processlogin.php?user="+username+"&pass="+password, true);
-
-	request.onreadystatechange = function () {
-		if (request.readyState == 4 && request.status == 200) {
-			var wasSuccessful = JSON.parse(request.responseText);
-			// valid login
-			if (wasSuccessful == 1) {
-				registerSuccess();
-
-				// close panel & empty page content
-				$(".afterNavBar").empty();
-				$("#panel-right").panel("close");				
-
-				// show form
-				var form = "<div class='container'>"+
-			    "  <form class='form-signin' id='newsform' action='javascript:addNews();'>"+
-			    "    <h2 class='heading'>New Message!</h2>"+
-			    "    <div class='alerts'></div>"+
-			    "     <div class='control-group'>"+
-			    "        <input type='text' id='newsTitle' class='input-block-level' name='newsTitle' placeholder='Title' required>"+
-			    "        <textarea class='input-block-level' id='newsMessage' placeholder='Message' required></textarea>"+
-			    "    </div>"+
-			    "    <input type='submit' id='submitButton' class='btn btn-primary btn-large' value='Submit!'>"+
-			    "  </form>"+
-			    "</div>";				
-
-		    	$(".afterNavBar").append(form);
-			} 
-			else{
-				badPass();
-			}
-			// erase the user/pass fields
-			$("#user").val("");
-			$("#pass").val("");
-		}
-	}
-	request.send();
-}
-
 function badPass () {
 	$(".control-group").attr("class", "control-group error");
 	var alert = $("#form-alert");
