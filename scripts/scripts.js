@@ -30,14 +30,6 @@ function getMoreImages () {
 	getGalleryFeed();
 }
 
-function badPass () {
-	$(".control-group").attr("class", "control-group error");
-	var alert = $("#form-alert");
-	alert.empty();
-	alert.attr("class", "alert alert-block alert-error fade in");
-	alert.append('<h4 class="alert-heading">Invalid Login!</h4>Bad username and password combination!');
-}
-
 function registerSuccess () {
 	// reset sign in form
 	$("#form-alert").empty();
