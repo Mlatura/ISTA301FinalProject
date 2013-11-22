@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- styles -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="stylesheets/animate-custom.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/instafeed.min.js"></script>
         <script type="text/javascript" src="scripts/collage.js"></script>
         <title>ISTA 301: Final Project</title>
     </head>
     <body onLoad=init()>
+    
+    <div class="container">
 
-        <div style="height: 100px;">
-                Instagram Tag: #
-                <input type="text" id="tag_input" name="tag" value="Love"/>
-                <button id="load_button">Load Images</button>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Hello, world!</h1>
+                <p>Description...</p>
+                <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+            </div>
         </div>
+        
+        <div id="form">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">#</span>
+                <input type="text" class="form-control" id="tag_input" value="love" placeholder="Instagram Tag">
+                <span class="input-group-btn">
+                    <button id="load_button" class="btn btn-primary" type="button">Load Images!</button>
+                </span>
+            </div>
+        </div>
+
         <div id="instafeed"></div>
+    
+    </div>
     </body>
 </html>

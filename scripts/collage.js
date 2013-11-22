@@ -20,10 +20,10 @@ function fetch_images(){
         tagName: tag, 
         sortBy: 'random',
         links: false,
-        limit: 5,
+        limit: 10,
         resolution: 'low_resolution',
         clientId: 'ef0bbd19aa4547dbaca0fa96ef0b30dd',
-        template: '<img src="{{image}}" />',
+        template: '<img class="feed-image" src="{{image}}" />',
         after: rotateImages
     });
     feed.run();
@@ -34,10 +34,11 @@ function rotateImages(){
     $('img').each( function(i, img){
         var rotation = Math.floor((Math.random()*100)-50);
         var rotation_string = 'rotate(' + rotation + 'deg)';
-
-        img.style.setProperty('border-style', 'solid');
+                
         img.style.setProperty('transform', rotation_string);
         img.style.setProperty('-webkit-transform', rotation_string);
         img.style.setProperty('-ms-transform', rotation_string);
+
+        
     });
 }
