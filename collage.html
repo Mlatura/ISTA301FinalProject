@@ -10,6 +10,7 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/instafeed.min.js"></script>
         <script type="text/javascript" src="scripts/collage.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <title>ISTA 301: Final Project</title>
     </head>
     <body onLoad=init()>
@@ -18,9 +19,9 @@
 
         <div class="jumbotron">
             <div class="container">
-                <h1>Hello, world!</h1>
-                <p>Description...</p>
-                <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+                <h1>Collage Creator</h1>
+                <p>Instantly create collages of web images!</p>
+                <a href="#" id="popover" class="btn btn-danger" rel="popover">Want to contribute?</a>
             </div>
         </div>
         
@@ -29,7 +30,7 @@
                 <span class="input-group-addon">#</span>
                 <input type="text" class="form-control" id="tag_input" value="love" placeholder="Instagram Tag">
                 <span class="input-group-btn">
-                    <button id="load_button" class="btn btn-primary" type="button">Load Images!</button>
+                    <button id="load_button" class="btn btn-primary" type="button">Create Collage!</button>
                 </span>
             </div>
         </div>
