@@ -4,11 +4,10 @@ var tag;
 function init(){
     tag = (retrieve_get_params()['tag']) ? retrieve_get_params()['tag'] : DEFAULT_TAG;
     $('#tag_input').val(tag);
-    //setup_popover();
     fetch_images();
     $("#load_button").click( function(){
         if( tag != $("#tag_input").val() ){
-            fetch_images();
+            add_get_param('tag', $("#tag_input").val());
         } else{
             console.log("Tag has not changed since last request");
         }
@@ -37,9 +36,29 @@ function retrieve_get_params(){
     return params;
 }
 
-function fetch_images(){
-    tag = $("#tag_input").val();
+function add_get_param(key, value){
+    key = encodeURIComponent(key);
+    value = encodeURIComponent(value);
+    var kvp = document.location.search.substr(1).split('&');
+    if( kvp == ''){
+        document.location.search = '?' + key + '=' + value;
+    } else{
+        var i = kvp.length; 
+        var x; 
+        while( i-- ){
+            x = kvp[i].split('=');
+            if( x[0] == key){
+                x[1] = value;
+                kvp[i] = x.join('=');
+                break;
+            }
+        }
+        if ( i < 0 ){ kvp[kvp.length] = [key, value].join('='); }
+        document.location.search = kvp.join('&');
+    }
+}
 
+function fetch_images(){
     var feed = new Instafeed({
         get: 'tagged',
         tagName: tag, 
@@ -48,11 +67,10 @@ function fetch_images(){
         limit: 10,
         resolution: 'low_resolution',
         clientId: 'ef0bbd19aa4547dbaca0fa96ef0b30dd', template: '<img class="feed-image" src="{{image}}" />',
-        after: rotateImages
+        after: function(){ rotateImages(); setup_popover(); }
     });
     feed.run();
     console.log("fetching images with tag: " + $("#tag_input").val());
-    setup_popover();
 }
 
 function rotateImages(){
@@ -63,7 +81,5 @@ function rotateImages(){
         img.style.setProperty('transform', rotation_string);
         img.style.setProperty('-webkit-transform', rotation_string);
         img.style.setProperty('-ms-transform', rotation_string);
-
-        
     });
 }
