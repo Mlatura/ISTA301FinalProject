@@ -2,15 +2,15 @@
 <html>
     <head>
         <!-- styles -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="stylesheets/animate-custom.css" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/animate-custom.css">
+        <link rel='stylesheet' type="text/css" href='http://fonts.googleapis.com/css?family=Lato:300' >
         <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="scripts/instafeed.min.js"></script>
         <script type="text/javascript" src="scripts/collage.js"></script>
-        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <title>Collage Creator</title>
     </head>
     <body onLoad=init()>
@@ -21,19 +21,46 @@
             <div class="container">
                 <h1>Collage Creator</h1>
                 <p>Instantly create collages of web images!</p>
-                <a href="#" id="popover" class="btn btn-danger" rel="popover">Want to contribute?</a>
+                <div class="centerfy">
+                    <div class="input-group" style="max-width: 90%;">
+                        <span class="input-group-addon">#</span>
+                        <input type="text" class="form-control"id="tag_input" value="love" placeholder="Instagram Tag">
+                        <span class="input-group-btn">
+                            <button id="load_button" class="btn btn-primary" type="button">Generate Collage!</button>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                <a href="#" id="contribute-popover" class="btn btn-danger">How to contribute to this collage</a>
+                <a href="#" id="create-theme-popover" class="btn btn-primary">Create your own collage theme</a>
+                <a href="#" id="public-collages-popover" class="btn btn-success">View public collages</a>
+                </div>
+                <div id="create-theme-content" class="hide" >
+                    <form action="create_theme" method="post">
+                        <div class="input-group">
+                            <span class="input-group-addon create-addon">Instagram Tag</span>
+                            <span class="input-group-addon white-addon">#</span>
+                            <input type="text" name="Tag" class="form-control" maxlength="20" placeholder="Desired Instagram tag">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon create-addon">Collage Description</span>
+                            <textarea class="form-control" name="Description" style="resize:none;" maxlength="200" maxrows="1" cols="10" placeholder="Describe the types of photos you would like in this collage theme"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon create-addon">List as public collage</span>
+                            <span class="input-group-addon">
+                                <input type="checkbox" name="Public" checked>
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-default btn-block" value="Submit">Create</button>
+                    </form>
+                </div>
+                <div id="public-collages-content" class="hide" >
+                    <h1>JUST A TEST</h1>
+                </div>
             </div>
         </div>
         
-        <div id="form">
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon">#</span>
-                <input type="text" class="form-control" id="tag_input" value="love" placeholder="Instagram Tag">
-                <span class="input-group-btn">
-                    <button id="load_button" class="btn btn-primary" type="button">Create Collage!</button>
-                </span>
-            </div>
-        </div>
 
         <div id="instafeed"></div>
     

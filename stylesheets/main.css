@@ -1,17 +1,14 @@
 body {
     font-family: Verdana, Helvetica, sans-serif;
     background: url('grain.png') repeat top center;
-    /* background-color: #DDDDDD; */
     padding: 10px;
 }
 
 .jumbotron{
+    padding: 15px;
 	background-color: lightskyblue;
 	color: white;
-}
-
-#form {
-	margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 /* instafeed */
@@ -24,3 +21,22 @@ body {
    /* max-height: 123px; */
    box-shadow: 0px 0px 7px 2px grey;
 }
+
+.popover{
+    max-width: 500px;
+    color: black;
+    font-size: 14px;
+}
+
+.create-addon{
+    min-width: 165px;
+}
+
+.white-addon{
+    background-color: white;
+}
+
+.input-group{ 
+    font-size: 14px !important;
+}
+

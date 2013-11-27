@@ -17,7 +17,25 @@ class Collage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('collage.html')
         self.response.write(template.render())
 
+class CollageTheme(ndb.Model):
+    """Models a collage theme created by a user with an instagram tag and description"""
+    instagramTag = ndb.StringProperty()
+    description = ndb.StringProperty()
+    public = ndb.BooleanProperty()
+
+class CreateTheme(webapp2.RequestHandler):
+    def post(self):
+        tag = self.request.get('Tag')
+        description = self.request.get('Description')
+        public = self.request.get('Public') == 'on'
+
+        if tag:
+            new_theme = CollageTheme(instagramTag = tag, description = description, public = public)
+            self.response.write( str(new_theme) )
+        else:
+            self.redirect('/?error=NoTag')
 
 application = webapp2.WSGIApplication([
-    ('/', Collage)
+    ('/', Collage),
+    ('/create_theme', CreateTheme)
 ], debug=True)

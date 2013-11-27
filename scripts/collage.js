@@ -14,12 +14,34 @@ function init(){
     });
 }
 
-function setup_popover(){
-    $("#popover").popover('destroy');
+function setup_popovers(){
+    $("#contribute-popover").popover('destroy');
     $(function (){ 
-        $("#popover").popover({
-            trigger: 'hover',
+        $("#contribute-popover").popover({
             content: 'Upload your images to Instagram with the tag ' + ('#' + tag).bold() + ', it\'s that simple!',
+            placement: 'top',
+            html: 'true'
+        });
+    });
+
+    $("#create-theme-popover").popover('destroy');
+    $(function (){
+        $("#create-theme-popover").popover({
+            content: function() {
+                return $('#create-theme-content').html();
+            },
+            placement: 'bottom',
+            html: 'true'
+        });
+    });
+
+    $("#public-collages-popover").popover('destroy');
+    $(function (){
+        $("#public-collages-popover").popover({
+            content: function() {
+                return $('#public-collages-content').html();
+            },
+            placement: 'top',
             html: 'true'
         });
     });
@@ -67,7 +89,7 @@ function fetch_images(){
         limit: 10,
         resolution: 'low_resolution',
         clientId: 'ef0bbd19aa4547dbaca0fa96ef0b30dd', template: '<img class="feed-image" src="{{image}}" />',
-        after: function(){ rotateImages(); setup_popover(); }
+        after: function(){ rotateImages(); setup_popovers(); }
     });
     feed.run();
     console.log("fetching images with tag: " + $("#tag_input").val());
