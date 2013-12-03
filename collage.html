@@ -33,11 +33,11 @@
                 </div>
                 <div>
                     <button type="button" id="description-button" class="btn btn-success sep-btn">Show Description</button>
-                    <a href="#" id="contribute-popover" class="btn btn-danger sep-btn">Contribute to this collage</a>
+                    <a href="#" id="contribute-popover" class="btn btn-danger sep-btn">How it works</a>
                     <a href="#" id="create-theme-popover" class="btn btn-warning sep-btn">Create your own collage theme</a>
                 </div>
                 <div id="description-content" class="collapse" >
-                    <p> {{ description }}</p>
+                        <div class="well" style="color: white;background-color: #87CEFA;max-width:90%;"> {{ description }}</div>
                 </div>
                 <div id="create-theme-content" class="hide" >
                     <form action="/" method="get">

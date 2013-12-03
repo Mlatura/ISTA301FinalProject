@@ -49,7 +49,7 @@ function init_instruction_popover(){
     $("#contribute-popover").popover('destroy');
     $(function (){ 
         $("#contribute-popover").popover({
-            content: 'Upload your images to Instagram with the tag ' + ('#' + tag).bold() + ', it\'s that simple!',
+           content: '<p style="font-size: 10;">You choose the <b>#Tag</b> and Collage Creator will fetch related images from Instagram for you to position and arrange to your heart\'s content. <br><br>Click and drag to reposition a photo and use the left and right arrow keys while dragging to rotate!</p>',
             placement: 'top',
             html: 'true'
         });
@@ -108,7 +108,7 @@ function fetch_images(){
         tagName: tag, 
         sortBy: 'random',
         links: false,
-        limit: 10,
+        limit: 25,
         resolution: 'low_resolution',
         clientId: 'ef0bbd19aa4547dbaca0fa96ef0b30dd', template: '<img class="feed-image" src="{{image}}" />',
         after: function(){ $('img').drags(); init_instruction_popover(); }
